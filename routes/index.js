@@ -12,47 +12,51 @@ router.get('/stats', (req, res) => {
 });
 
 
-// router.get("/notes", (req, res) => {
-//     db.Note.find({})
-//         .then(dbNote => {
-//             res.json(dbNote);
-//         })
-//         .catch(err => {
-//             res.json(err);
-//         });
-// });
+router.get("/api/workouts", (req, res) => {
+    //     db.Note.find({})
+    //         .then(dbNote => {
+    //             res.json(dbNote);
+    //         })
+    //         .catch(err => {
+    //             res.json(err);
+    //         });
+    res.send("Hit route 1!");
+});
 
-// router.get("/user", (req, res) => {
-//     db.User.find({})
-//         .then(dbUser => {
-//             res.json(dbUser);
-//         })
-//         .catch(err => {
-//             res.json(err);
-//         });
-// });
+router.put("/api/workouts/:objectId", (req, res) => {
+    //     db.User.find({})
+    //         .then(dbUser => {
+    //             res.json(dbUser);
+    //         })
+    //         .catch(err => {
+    //             res.json(err);
+    //         });
+    res.send("Hit route 2!");
+});
 
-// router.post("/submit", ({ body }, res) => {
-//     db.Note.create(body)
-//         .then(({ _id }) => db.User.findOneAndUpdate({}, { $push: { notes: _id } }, { new: true }))
-//         .then(dbUser => {
-//             res.json(dbUser);
-//         })
-//         .catch(err => {
-//             res.json(err);
-//         });
-// });
+router.post("api/workouts", ({ body }, res) => {
+    //     db.Note.create(body)
+    //         .then(({ _id }) => db.User.findOneAndUpdate({}, { $push: { notes: _id } }, { new: true }))
+    //         .then(dbUser => {
+    //             res.json(dbUser);
+    //         })
+    //         .catch(err => {
+    //             res.json(err);
+    //         });
+    res.send("Hit route 3!");
+});
 
-// router.get("/populateduser", (req, res) => {
-//     db.User.find({})
-//         .populate("notes")
-//         .then(dbUser => {
-//             res.json(dbUser);
-//         })
-//         .catch(err => {
-//             res.json(err);
-//         });
-// });
+router.get("/api/workouts/range", (req, res) => {
+    //     db.User.find({})
+    //         .populate("notes")
+    //         .then(dbUser => {
+    //             res.json(dbUser);
+    //         })
+    //         .catch(err => {
+    //             res.json(err);
+    //         });
+    res.send("Hit route 4!");
+});
 
 // If no matching route is found default to home
 router.get('*', (req, res) => {
