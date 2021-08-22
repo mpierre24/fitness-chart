@@ -24,38 +24,37 @@ router.get("/api/workouts", (req, res) => {
 });
 
 router.put("/api/workouts/:objectId", (req, res) => {
-    //     db.User.find({})
-    //         .then(dbUser => {
-    //             res.json(dbUser);
-    //         })
-    //         .catch(err => {
-    //             res.json(err);
-    //         });
-    res.send("Hit route 2!");
+    db.Workouts.findOneAndUpdate({ _id: req.params.objectId }, { $push: { exercises: req.body } })
+        .then(dbWorkout => {
+            res.json(dbWorkout);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+
 });
 
-router.post("api/workouts", ({ body }, res) => {
-    //     db.Note.create(body)
-    //         .then(({ _id }) => db.User.findOneAndUpdate({}, { $push: { notes: _id } }, { new: true }))
-    //         .then(dbUser => {
-    //             res.json(dbUser);
-    //         })
-    //         .catch(err => {
-    //             res.json(err);
-    //         });
-    res.send("Hit route 3!");
+router.post("/api/workouts", ({ body }, res) => {
+    db.Workouts.create(body)
+
+        .then(dbWorkout => {
+            res.json(dbWorkout);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+
 });
 
 router.get("/api/workouts/range", (req, res) => {
-    //     db.User.find({})
-    //         .populate("notes")
-    //         .then(dbUser => {
-    //             res.json(dbUser);
-    //         })
-    //         .catch(err => {
-    //             res.json(err);
-    //         });
-    res.send("Hit route 4!");
+    db.Workouts.find({})
+        .then(dbWorkouts => {
+            res.json(dbWorkouts);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+
 });
 
 // If no matching route is found default to home
