@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 const path = require('path')
-// const db = require("./models")
+const db = require("../models/index.js")
 
 router.get('/exercise', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/exercise.html'));
@@ -13,14 +13,14 @@ router.get('/stats', (req, res) => {
 
 
 router.get("/api/workouts", (req, res) => {
-    //     db.Note.find({})
-    //         .then(dbNote => {
-    //             res.json(dbNote);
-    //         })
-    //         .catch(err => {
-    //             res.json(err);
-    //         });
-    res.send("Hit route 1!");
+    db.Workouts.find({})
+        .then(dbWorkouts => {
+            res.json(dbWorkouts);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+
 });
 
 router.put("/api/workouts/:objectId", (req, res) => {
